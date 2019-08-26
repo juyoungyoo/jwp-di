@@ -16,9 +16,9 @@ public class AnnotationHandlerMappingTest {
 
     @BeforeEach
     public void setup() {
-        BeanFactory beanFactory = new BeanFactory();
-        BeanScanner scanner = new BeanScanner(beanFactory,"core.mvc.tobe");
-        scanner.enroll();
+        BeanScanner scanner = new BeanScanner("core.mvc.tobe");
+        BeanFactory beanFactory = BeanFactory.initialize(scanner.enroll());
+
         handlerMapping = new AnnotationHandlerMapping(beanFactory);
         handlerMapping.initialize();
     }
